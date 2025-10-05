@@ -1,0 +1,311 @@
+/*Theme variables*/
+:root{
+  --bg: #4c71a8;
+  --card: #ffffff;
+  --accent: #0f3b6b;
+  --accent-2: #2564a9;
+  --muted: #6b7280;
+  --text: #111827;
+  --border: #e6e9ef;
+  --soft-shadow: 0 8px 28px rgba(17,24,39,0.06);
+  --radius: 10px;
+  --max-width: 1160px;
+  --sp: 14px; /* spacing base */
+}
+
+/* --------------------
+   Global reset & base
+   -------------------- */
+* { box-sizing: border-box; }
+html,body { height:100%; margin:0; padding:0; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+body {
+  font-family: "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: 17.5px;
+  line-height: 1.55;
+  padding-bottom: 32px;
+  scroll-behavior: smooth;
+}
+
+/* center main content tables */
+table[align="center"], table { max-width: var(--max-width); margin-left: auto !important; margin-right: auto !important; }
+
+/* link styles */
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-2); text-decoration: underline; }
+a[target="_blank"]::after { content: " ↗"; font-size: 0.75rem; opacity: .6; }
+
+/* small typography helpers */
+.kicker { color: var(--accent); font-weight: 700; }
+.small-muted { color: var(--muted); font-size: 0.92rem; }
+
+/* horizontal rule */
+hr { height:1px; background:var(--border); border:0; margin:18px auto; max-width:var(--max-width); border-radius:2px; }
+
+
+/*Header & top nav */
+
+h1#home {
+  font-size: 2rem;
+  color: var(--accent);
+  margin: 12px 0 6px;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+h3 { margin:0; font-weight:600; color:var(--muted); text-align:center; }
+
+/* top inline link row (keeps the same anchors but makes them pleasant) */
+tr:nth-child(2) td {
+  text-align:center; padding: 8px 10px; background: transparent;
+}
+tr:nth-child(2) td a {
+  margin: 0 8px;
+  display:inline-block;
+  font-weight:700;
+  color:var(--accent);
+}
+
+/* make tables responsive by default */
+table {
+  width:100% !important;                 /* override fixed inline widths */
+  display:block;
+  overflow-x:auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: separate;
+  border-spacing: 10px;
+  margin: 16px auto;
+  padding: 0;
+  background: transparent;
+}
+
+/* standard cells */
+table th, table td {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: .98rem;
+  vertical-align: middle;
+  text-align: center;
+  min-width: 90px; /* prevents collapse on wide tables */
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* header cells */
+table th {
+  background: linear-gradient(180deg, #59e04c, #27d627);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* alternating row shading for readability */
+table tbody tr:nth-child(odd) td { background: #ffffff; }
+table tbody tr:nth-child(even) td { background: #fbfcfd; }
+
+/* refine existing 'light-text-row' class */
+.light-text-row td, .light-text-row th {
+  color: #8f99a6;
+  background: #fbfcfd;
+}
+
+/* subtle box for dense tables */
+table[border="1"][align="center"], table[align="center"][width="10%"][border="1"] {
+  box-shadow: var(--soft-shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/*Grading Distribution (perfect alignment)*/
+table[border="1"][align="center"] {
+  width: 48% !important;          /* balanced width */
+  margin: 24px auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background: #d8a7a7;
+  box-shadow: var(--soft-shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* cells */
+table[border="1"][align="center"] th,
+table[border="1"][align="center"] td {
+  padding: 14px 18px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+}
+
+/* header */
+table[border="1"][align="center"] tr:first-child th {
+  background: var(--accent);
+  color: #d86666;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* Deliverables column: left aligned */
+table[border="1"][align="center"] tr td:first-child {
+  text-align: left;
+  width: 75%;                     /* most space for text */
+  font-weight: 500;
+}
+
+/* Weightage column: centered, narrow */
+table[border="1"][align="center"] tr td:last-child {
+  text-align: center;
+  width:65%;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* zebra striping */
+table[border="1"][align="center"] tr:nth-child(odd) td {
+  background: #fbfdfe;
+}
+
+/* hover highlight */
+table[border="1"][align="center"] tr:hover td {
+  background: #f1f6fb;
+  transition: background 0.2s ease-in-out;
+}
+
+
+/* Evaluation Rubric */
+table[border="1"][align="center"][width="10%"] {
+  width: 90% !important;
+  margin: 18px auto;
+  border-collapse: collapse;
+  box-shadow: var(--soft-shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+  table-layout: fixed;
+}
+
+/* header */
+table[border="1"][align="center"][width="10%"] tr:first-child th {
+  background: var(--accent);
+  color:#fff; font-weight: 700;
+}
+
+/* cells left aligned for descriptions */
+table[border="1"][align="center"][width="10%"] th,
+table[border="1"][align="center"][width="10%"] td {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: .95rem;
+  vertical-align: top;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.35;
+}
+
+/* column width distribution */
+table[border="1"][align="center"][width="10%"] th:nth-child(1),
+table[border="1"][align="center"][width="10%"] td:nth-child(1) { width: 12%; text-align:center; font-weight:600; }
+table[border="1"][align="center"][width="10%"] th:nth-child(2),
+table[border="1"][align="center"][width="10%"] td:nth-child(2) { width: 18%; }
+table[border="1"][align="center"][width="10%"] th:nth-child(3),
+table[border="1"][align="center"][width="10%"] td:nth-child(3) { width: 40%; }
+table[border="1"][align="center"][width="10%"] th:nth-child(4),
+table[border="1"][align="center"][width="10%"] td:nth-child(4) { width: 18%; }
+table[border="1"][align="center"][width="10%"] th:nth-child(5),
+table[border="1"][align="center"][width="10%"] td:nth-child(5) { width: 12%; }
+
+/* Lecture Schedule & Lab Schedule (4-column layout) */
+@media (min-width: 720px) {
+  table[align="center"] { table-layout: fixed; }
+  table[align="center"] th:nth-child(1),
+  table[align="center"] td:nth-child(1) {
+    width: 6%;
+    min-width: 48px;
+    max-width: 72px;
+    font-size: .84rem;
+    font-weight:700;
+    color: var(--muted);
+    text-align: center;
+    padding: 10px 8px;
+  }
+
+  /* Schedule column: medium and centered */
+  table[align="center"] th:nth-child(2),
+  table[align="center"] td:nth-child(2) {
+    width: 18%;
+    text-align: center;
+    font-weight: 600;
+    min-width: 120px;
+  }
+
+  /* Lecture Content / Topic: widest, left aligned for reading */
+  table[align="center"] th:nth-child(3),
+  table[align="center"] td:nth-child(3) {
+    width: 56%;
+    text-align: left;
+    padding-left: 16px;
+    min-width: 320px;
+    line-height: 1.45;
+  }
+
+  /* Material / Notes column: compact, left aligned */
+  table[align="center"] th:nth-child(4),
+  table[align="center"] td:nth-child(4) {
+    width: 20%;
+    text-align: left;
+    padding-left: 14px;
+    min-width: 140px;
+  }
+}
+
+/* Small/medium screens: fluid but tidy */
+@media (max-width: 719px) {
+  table[align="center"] { table-layout: auto; }
+  table[align="center"] th:nth-child(1),
+  table[align="center"] td:nth-child(1) {
+    width: 8%;
+    font-size: .82rem;
+    min-width: 40px;
+  }
+  table[align="center"] th:nth-child(2),
+  table[align="center"] td:nth-child(2) { width: 24%; }
+  table[align="center"] th:nth-child(3),
+  table[align="center"] td:nth-child(3) { width: 52%; text-align: left; padding-left: 12px; }
+  table[align="center"] th:nth-child(4),
+  table[align="center"] td:nth-child(4) { width: 24%; text-align: left; padding-left: 10px; }
+
+  /* Material links wrap and become pill-like */
+  table[align="center"] td:nth-child(4) a {
+    display:inline-block; padding:6px 8px; border-radius:8px;
+    background: rgba(15,59,107,0.04); border: 1px solid rgba(15,59,107,0.03); font-weight:600;
+  }
+}
+
+/* Material link pills (consistent look)*/
+table td a, table th a {
+  color: var(--accent);
+  font-weight: 700;
+}
+table td:nth-child(4) a {
+  display:inline-block; padding:6px 8px; border-radius:8px;
+  background: rgba(15,59,107,0.04); border: 1px solid rgba(15,59,107,0.03);
+}
+table td:nth-child(4) a:hover {
+  background: rgba(15,59,107,0.06);
+  border-color: rgba(15,59,107,0.06);
+}
+
+/* Accessibility & focus*/
+a:focus, button:focus, input:focus {
+  outline: 3px solid rgba(15,59,107,0.12);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Tiny screens fallback */
+@media (max-width: 420px) {
+  body { font-size: 15px; }
+  table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table th, table td { padding: 8px; font-size: .92rem; min-width: 88px; }
+  table[border="1"][align="center"] { width: 96% !important; }
+}
+
